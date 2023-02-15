@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "locator-awd9",
+  "private_key_id": "52c7d0052753ae81d38c1e3d1e5c6ae57aa86deb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCMervgdB4RswiO\neF1YQ+/yAelRJD8cdamkFqM+oVzxZImvioPmukiRpsU52/vrf8NlUf57TYXr/pud\n6KMTfmmqUlKLAN2Kn4REIwXl4aW9ZB9Xn0bUgfJoCB4Zu18DyTbaAdCwyvSnbY7Y\nMuMUmdBWpOiXJDhpfGs7dRf84b085ROyHwKlHiEuq82vscR5+O/DGPxiI+FZp5QK\n2UKZj41xJLnLtnaZ94q2j5dDyev4/aSdWr7eKcrkedt/6HzatjLkwbHjo4aOq+kS\n6mpLUSGPbh+OElWs4A2o3XIBmKZNVbsRbDk8mTMVhQQoenBQVTXMlbaDBIoWmwA9\n0lPT91unAgMBAAECggEAEe7A+QAZroy6NOWslM3nXW9dB1ynKczjYOz63c3ffXkm\nEmCOQe/Zv64YUzB/0io3GUIESF03EU8pMlk2KBDlEDb+DnyHy2BdlA0cfaH2dFzJ\nm3fbpNkJxrnyjbpbgLI47E97AnaGELFtoK+uSTzxWX4nqtOW1/BoB+kErOVsMM+k\n6y5jk7eKpE4AZdg2jjEKPmgxFtlbff5dvXZWdvsko92t9Dnf8+FzKF7J0nCbWpcB\neLjKI4HyR776RCltgbP+2AVe4COn7OjRxwxR+FGlz2Zr011RmLn28xttpPmqlhCr\nk6bUgN/oCx2W914aoShhui6577Fzd0Aj2l27yiRp4QKBgQDCoFgnYLkWvYikjFAU\nUYHHt6LJeSvSpGUb6oOhEcFpoJfa3g12u3nBp0LTv30P+ClkLpKyMHxgHm3VD3R7\n3kDIRvT7xSF1WycfVU+NYD15N2nWPmaHZUHc86YKdhWCR2RTLITzaVJkHspqK5gQ\nrLp2l1el52V59q6H3qjZDALk3wKBgQC4x0GZx6J5hlqlzrkhfP7DNDUomLjTys5x\nJ51rwaa9FwsCfQ6lupXOJRa32efyXaidOG2CHMDDR0NZg54999Kbg8h2DsNtSkMp\nGC2W8m64KZ63yLCcdiS3zg1WRjGTDGRKFHGE3tS0EM+2ifqb4e+6DMZ566DsusWi\ntOp//KRaOQKBgQCVAi5795G9117GnKay57R1NCNuHVdv7m168hHVP8LVHB8nctrc\nDK0rluOTOwiFMXp/OSkXRAf1j1aHyU1liMQQkkL+f+8d6qwJUUeW9hgatlJRtXTK\nNLw4blKxr7bIB+DHzU39DqYGAYz3vGiwW45nPXfdjUwkFLmLTO35Pzj4AQKBgCZZ\npLHoDz6tte6n4yCiMrYNBeNxHxtGAmbV1ARjYtnoCG7xybJ38VOhuv9ZiJxy9+X5\nqjDRCuj8x2uyt4sg/mMsjNSD5+es/BdxXzTvCC/M45Y9Xvp6QtCrQXVgiDV+4unF\nKHJtVTQyMQovxQXJdNnmgOMZFoNLmG1Woz0BEJNxAoGAC5EF14/yNkl8DnWYwMeC\nCbn0hX6NDtgUE2qeIxvb3hsCNFbi/A3We/Ng5/CysjbSe7hgx34DwKaEdQbvqN2y\nmpmXx8/oeGoVIQpHLNwtIo4kZfb2jYAHXlkwQbt39zh6TQWMwfW1+o0sonJhrF8l\nZye+CwCk8Yz0dasv5xXSRqw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "locator-api@locator-awd9.iam.gserviceaccount.com",
+  "client_id": "115318694753561380554",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/locator-api%40locator-awd9.iam.gserviceaccount.com"
+}
