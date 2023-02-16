@@ -41,6 +41,21 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Allow access to location services</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow access to location services</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Allow access to location services</string>
+	<key>UIBackgroundModes</key>
+	<array>
+    	<string>fetch</string>
+    	<string>remote-notification</string>
+    	<string>location</string>
+	</array>
+
+	
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>

@@ -17,13 +17,17 @@ import 'package:geocoding/geocoding.dart';
 import 'package:location_platform_interface/location_platform_interface.dart';
 import 'package:location/location.dart' as loc;
 
+import 'package:flutter_background_service/flutter_background_service.dart';
+
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:soundpool/soundpool.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 
-void main() {
+Future<void> main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 
@@ -118,6 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+    //FlutterBackgroundService().invoke('setAsBackground');
     initSpeechState();
     _streamSubscriptions.add(accelerometerEvents.listen((event) {
       setState(() {
@@ -132,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
             startWizard();
           } else {
             if (_timer != null) _timer.cancel();
-            
+
             _timer = Timer(Duration(seconds: 2), () {
               setState(() {
                 _shakeCount = 0;
@@ -417,3 +422,156 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 }
+
+// import 'dart:async';
+// import 'package:geocoding/geocoding.dart';
+// import 'package:location_platform_interface/location_platform_interface.dart';
+// import 'package:location/location.dart' as loc;
+
+// import 'package:flutter_background_service/flutter_background_service.dart'
+//     show
+//         AndroidConfiguration,
+//         FlutterBackgroundService,
+//         IosConfiguration,
+//         ServiceInstance;
+// import 'package:flutter/material.dart';
+// import 'background_service.dart';
+
+// Future<void> main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+
+//   await initializeService();
+
+//   runApp(const MyApp());
+// }
+
+// class MyApp extends StatefulWidget {
+//   const MyApp({
+//     Key? key,
+//   }) : super(key: key);
+
+//   @override
+//   State<MyApp> createState() => _MyAppState();
+// }
+
+// class _MyAppState extends State<MyApp> {
+//   String text = "Stop Service";
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     print("iniciandoooooooo");
+//     //getCurrentAddress();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: const Text("Voice Bot"),
+//         ),
+//         body: Center(
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: [
+//               //for listen Continuous change in foreground we will be using Stream builder
+//               StreamBuilder<Map<String, dynamic>?>(
+//                   stream: FlutterBackgroundService().on('update'),
+//                   builder: (context, snapshot) {
+//                     if (!snapshot.hasData) {
+//                       return const Center(
+//                         child: CircularProgressIndicator(),
+//                       );
+//                     }
+//                     final data = snapshot.data!;
+//                     int? counter = data["counter"];
+//                     DateTime? date = DateTime.tryParse(data["current_date"]);
+//                     return Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: [
+//                         Text('Counter => $counter'),
+//                         Text(date.toString()),
+//                       ],
+//                     );
+//                   }),
+//               Padding(
+//                 padding: const EdgeInsets.all(8.0),
+//                 child: GestureDetector(
+//                   child: Container(
+//                       padding: const EdgeInsets.symmetric(
+//                           vertical: 10, horizontal: 20),
+//                       decoration: BoxDecoration(
+//                           color: Colors.blueAccent,
+//                           borderRadius: BorderRadius.circular(16)),
+//                       child: const Text(
+//                         "Foreground Mode",
+//                         style: TextStyle(color: Colors.white),
+//                       )),
+//                   onTap: () {
+//                     FlutterBackgroundService().invoke("setAsForeground");
+//                   },
+//                 ),
+//               ),
+//               Padding(
+//                 padding: const EdgeInsets.all(8.0),
+//                 child: GestureDetector(
+//                   child: Container(
+//                       padding: const EdgeInsets.symmetric(
+//                           vertical: 10, horizontal: 20),
+//                       decoration: BoxDecoration(
+//                           color: Colors.blueAccent,
+//                           borderRadius: BorderRadius.circular(16)),
+//                       child: const Text(
+//                         "Background Mode",
+//                         style: TextStyle(color: Colors.white),
+//                       )),
+//                   onTap: () {
+//                     print('start');
+//                     FlutterBackgroundService().invoke("setAsBackground");
+//                   },
+//                 ),
+//               ),
+//               Padding(
+//                 padding: const EdgeInsets.all(8.0),
+//                 child: GestureDetector(
+//                   child: Container(
+//                     padding: const EdgeInsets.symmetric(
+//                         vertical: 10, horizontal: 20),
+//                     decoration: BoxDecoration(
+//                         color: Colors.blueAccent,
+//                         borderRadius: BorderRadius.circular(16)),
+//                     child: Text(
+//                       text,
+//                       style: const TextStyle(color: Colors.white),
+//                     ),
+//                   ),
+//                   onTap: () async {
+//                     final service = FlutterBackgroundService();
+//                     //final service = widget.appStateService.service;
+//                     var isRunning = await service.isRunning();
+//                     if (isRunning) {
+//                       service.invoke("stopService");
+//                     } else {
+//                       service.startService();
+//                     }
+
+//                     if (!isRunning) {
+//                       text = 'Stop Service';
+//                     } else {
+//                       text = 'Start Service';
+//                     }
+//                     setState(() {});
+//                   },
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+
+  
+// }
