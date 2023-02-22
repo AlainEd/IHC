@@ -44,6 +44,8 @@ dependencies:
   location:
   flutter_background_service:
   osm_nominatim: 
+  intl:
+  app_settings:
 
 
   # The following adds the Cupertino Icons font to your application.

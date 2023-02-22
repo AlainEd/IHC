@@ -26,6 +26,11 @@ import 'package:dialogflow_flutter/googleAuth.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:osm_nominatim/osm_nominatim.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+// Hora
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import 'package:flutter_background_service_android/flutter_background_service_android.dart';
 
@@ -344,16 +349,64 @@ Future<void> sendMessage(String message) async {
     case 'restaurant':
       getCurrentPlaces('restaurant');
       break;
+    case 'hora':
+      getCurrentHour();
+      break;
+    case 'fecha':
+      getCurrentDate();
+      break;
     case 'No response':
-      synthesizeText("Porfavor agita nuevamente el celular, no te escuché bien...");
+      synthesizeText(
+          "Porfavor agita nuevamente el celular, no te escuché bien...");
       break;
     default:
       synthesizeText(text);
   }
   // synthesizeText("viendo luegaressssss");
   // getCurrentPlaces();
+}
 
-  
+void getCurrentDate() async {
+  // try {
+  await initializeDateFormatting('es_ES', null);
+  var now = DateTime.now();
+  var formatter = DateFormat('EEEE, d MMMM y', 'es_ES');
+  String formattedDate = formatter.format(now);
+  print('Fecha actual: $formattedDate');
+
+  synthesizeText('Hoy es $formattedDate');
+  // } catch (e) {
+  //   synthesizeText('Por favor intentalo de nuevo...');
+  //   print(e.toString());
+  // }
+}
+
+void getCurrentHour() async {
+  try {
+    await initializeDateFormatting('es_ES', null);
+    var now = DateTime.now();
+    var hourFormatter = DateFormat('h', 'es_ES');
+    var minuteFormatter = DateFormat('mm', 'es_ES');
+
+    String hour = hourFormatter.format(now);
+    String minute = minuteFormatter.format(now);
+    String amPm = DateFormat('a', 'es_ES').format(now);
+
+    if (amPm == 'a.m.')
+      amPm = 'mañana';
+    else {
+      if (int.parse(hour) <= 6)
+        amPm = 'tarde';
+      else
+        amPm = 'noche';
+    }
+
+    synthesizeText(
+        'La hora actual es, $hour de la $amPm con $minute minutos...');
+  } catch (e) {
+    synthesizeText('Por favor inténtalo de nuevo...');
+    print(e.toString());
+  }
 }
 
 void getCurrentLocation() async {
@@ -415,10 +468,15 @@ Future<void> getCurrentPlaces(String keyword) async {
       String place = places[i]['name'];
       lugares += '${place.toLowerCase()}, ';
     }
+
+    if (lugares.length > 250) 
+      lugares = lugares.substring(0, 250);
+
     print('lugares: $lugares');
+    
     if (lugares.length > 1) {
-      synthesizeText('Encontré los siguientes lugares: $lugares');
-    }else{
+      synthesizeText('Encontré estos lugares: $lugares');
+    } else {
       synthesizeText('No encontré lugares cercanos...');
     }
   } else {
@@ -426,8 +484,8 @@ Future<void> getCurrentPlaces(String keyword) async {
   }
 }
 
-
 Future<void> _initBackgroundLocation() async {
+
   print('empezando con la ubicacion');
   final LocationSettings locationSettings = AndroidSettings(
     accuracy: LocationAccuracy.high,
